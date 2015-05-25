@@ -203,3 +203,52 @@ function countPushes() {
             // $("#repo_count").append("Total Repos: " + result.length);
 }
 
+//----------------------------SHRINKING HEADER--------------------------------------\\
+
+$(function(){
+    $('#heading').data('size','big');
+});
+
+$(window).scroll(function(){
+    if($(document).scrollTop() > 0)
+    {
+        if($('#heading').data('size') == 'big')
+        {
+            $('#heading').data('size','small');
+            $('#heading').stop().animate({
+                height:'40px'
+            },600);
+
+            $('#name').data('size','big');
+            $('#name').stop().animate({
+                margin:'-25px'
+            },600);
+
+            $('#name').data('size','big');
+            $('#name').stop().animate({
+                padding:'0px'
+            },600);
+        }
+    }
+    else
+    {
+        if($('#heading').data('size') == 'small')
+        {
+            $('#heading').data('size','big');
+            $('#heading').stop().animate({
+                height:'100px'
+            },600);
+
+            $('#name').data('size','small');
+            $('#name').stop().animate({
+                margin:'0px'
+            },600);
+
+            $('#name').data('size','small');
+            $('#name').stop().animate({
+                padding:'20px'
+            },600);
+
+        }  
+    }
+});
