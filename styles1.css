@@ -1,5 +1,4 @@
 #repos {
-    display: inline-block;
     width:auto;
     height: 300px;
     overflow-y: scroll;
@@ -15,7 +14,11 @@
 
 }
 
-#repo_number{
+#repo_name4{
+    display: inline-block;
+}
+
+#repo_date5{
     display: inline-block;
 
 }
