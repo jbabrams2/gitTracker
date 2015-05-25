@@ -4,7 +4,7 @@ $("#btn_get_repos").click(function() {
             var arr2 = [];                                                //array that contains the count of pushes for each date (minus duplicates)
     $.ajax({                                             
         type: "GET",
-        url: "https://api.github.com/users/DrMavenRebe/repos",                 //connect to Github API
+        url: "https://api.github.com/users/Ocramius/repos",                 //connect to Github API
         dataType: "json",
         success: function(result) {
             for (var e = 0; e < result.length; e++)  {                    //for each result from api call:
@@ -50,7 +50,7 @@ $("#btn_get_repos").click(function() {
 
     $.ajax({                                             
         type: "GET",
-        url: "https://api.github.com/users/kexline4710/repos",                 //connect to Github API
+        url: "https://api.github.com/users/michalbe/repos",                 //connect to Github API
         dataType: "json",
         success: function(result) {
             for (var e = 0; e < result.length; e++)  {                    //for each result from api call:
