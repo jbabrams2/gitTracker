@@ -204,6 +204,8 @@ function countPushes() {
 }
 
 //----------------------------SHRINKING HEADER--------------------------------------\\
+                /*note, this section was copied and modified
+                  from http://jsfiddle.net/jezzipin/JJ8Jc/ */
 
 $(function(){
     $('#heading').data('size','big');
@@ -217,17 +219,17 @@ $(window).scroll(function(){
             $('#heading').data('size','small');
             $('#heading').stop().animate({
                 height:'40px'
-            },600);
+            },300);
 
             $('#name').data('size','big');
             $('#name').stop().animate({
                 margin:'-25px'
-            },600);
+            },300);
 
             $('#name').data('size','big');
             $('#name').stop().animate({
                 padding:'0px'
-            },600);
+            },300);
         }
     }
     else
@@ -237,17 +239,17 @@ $(window).scroll(function(){
             $('#heading').data('size','big');
             $('#heading').stop().animate({
                 height:'100px'
-            },600);
+            },300);
 
             $('#name').data('size','small');
             $('#name').stop().animate({
                 margin:'0px'
-            },600);
+            },300);
 
             $('#name').data('size','small');
             $('#name').stop().animate({
                 padding:'20px'
-            },600);
+            },300);
 
         }  
     }
