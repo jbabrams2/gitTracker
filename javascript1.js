@@ -254,3 +254,163 @@ $(window).scroll(function(){
         }  
     }
 });
+
+//----------------------------SHRINKING HEADER for ranGen--------------------------------------\\
+                /*note, this section was copied and modified
+                  from http://jsfiddle.net/jezzipin/JJ8Jc/ */
+
+                  $(function(){
+    $('#ranHeading').data('size','big');
+});
+
+$(window).scroll(function(){
+    if($(document).scrollTop() > 0)
+    {
+        if($('#ranHeading').data('size') == 'big')
+        {
+            $('#ranHeading').data('size','small');
+            $('#ranHeading').stop().animate({
+                height:'40px'
+            },300);
+
+            $('#name').data('size','big');
+            $('#name').stop().animate({
+                margin:'-25px'
+            },300);
+
+            $('#name').data('size','big');
+            $('#name').stop().animate({
+                padding:'0px'
+            },300);
+        }
+    }
+    else
+    {
+        if($('#ranHeading').data('size') == 'small')
+        {
+            $('#ranHeading').data('size','big');
+            $('#ranHeading').stop().animate({
+                height:'100px'
+            },300);
+
+            $('#name').data('size','small');
+            $('#name').stop().animate({
+                margin:'0px'
+            },300);
+
+            $('#name').data('size','small');
+            $('#name').stop().animate({
+                padding:'20px'
+            },300);
+
+        }  
+    }
+});
+
+//----------------------ranGen JAVASCRIPT-------------------\\
+
+function randomize() {
+
+        var avatarArray = [];
+        var userArray = [];
+
+    $.ajax({                                             
+      type: "GET",
+      url: "https://api.github.com/users?since=2000",               //connect to Github API
+      dataType: "json",
+      success: function(result) { 
+          
+ 
+          for (var e = 0; e < result.length; e++)  {                    //for each result from api call:
+          var avatar = result[e].avatar_url;
+          avatarArray.push(avatar);
+          console.log(avatarArray);                                        //print result in log
+
+          var user = result[e].login;
+          userArray.push(user);
+          console.log(userArray);                                       //print result in log
+          }
+            user = userArray[Math.floor(userArray.length * Math.random())];
+            console.log(user);
+            var matchingAvatar = avatarArray[userArray.indexOf(user)];
+            console.log(matchingAvatar);
+
+            var newUser = document.createTextNode("created by " + user)
+            var position = document.getElementById('userName');
+            position.appendChild(newUser);
+
+            var newUser2 = document.createTextNode("Other repositories by " +user);
+            var position2 = document.getElementById('secName');
+            position2.appendChild(newUser2);
+
+            var position = document.getElementById('userName');
+
+            var userPic = document.getElementById("profileImage");
+            var src = userPic.getAttribute("src");
+            src = matchingAvatar;
+            userPic.setAttribute("src", src);
+
+            var repoName = [];
+            var repoDescription = [];
+
+             $.ajax({                                             
+                  type: "GET",
+                  url: "https://api.github.com/users/"+user+"/repos",               //connect to Github API
+                  dataType: "json",
+                  success: function(result) { 
+                      for (var i = 0; i < 4; i++)  {
+                        var repo = result[i].name;
+                        repoName.push(repo);
+                        console.log(repoName); 
+
+                        var description = result[i].description;
+                        repoDescription.push(description);
+                        console.log(repoDescription);
+                      }
+
+                    var firstRepo = document.createTextNode(repoName[0])
+                    var position = document.getElementById('repository');
+                    position.appendChild(firstRepo);
+
+                    var firstRepoDescription = document.createTextNode(repoDescription[0])
+                    var position = document.getElementById('repoDesc');
+                    position.appendChild(firstRepoDescription);
+
+                    //posting additional repositories below\\
+
+                      //repoNames below
+
+                    var secRepo = document.createTextNode(repoName[1])
+                    var position = document.getElementById('secRepo');
+                    position.appendChild(secRepo);
+
+                    var thirdRepo = document.createTextNode(repoName[2])
+                    var position = document.getElementById('thirdRepo');
+                    position.appendChild(thirdRepo);
+
+                    var fourthRepo = document.createTextNode(repoName[3])
+                    var position = document.getElementById('fourthRepo');
+                    position.appendChild(fourthRepo);
+
+                      //repo descriptions below
+
+                    var secRepoDescription = document.createTextNode(repoDescription[1])
+                    var position = document.getElementById('secDesc');
+                    position.appendChild(secRepoDescription);
+
+
+                    var thirdRepoDescription = document.createTextNode(repoDescription[2])
+                    var position = document.getElementById('thirdDesc');
+                    position.appendChild(thirdRepoDescription);
+
+                    var fourthRepoDescription = document.createTextNode(repoDescription[3])
+                    var position = document.getElementById('fourthDesc');
+                    position.appendChild(fourthRepoDescription);
+
+                  }
+                });
+        }
+    });     
+  }
+
+

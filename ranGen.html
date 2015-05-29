@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body onload="randomize()">
+    <div id="ranHeading">
+        <h1 id="name">ranGen</h1>
+    </div>
+    <div id="Container">
+        <div id="infoContainer">
+            <div id="imgContainer" class="circle">
+                <img src="" class="image" id="profileImage" />
+            </div>
+            <h2 id="repository"></h2>
+            <h3 id="userName"></h3>
+            <p id="repoDesc"></p>
+            <a href="#" onclick="randomize();">Do it again!</a>
+        </div>
+    </div>
+    <div id="suggestionContainer">
+        <h2 id="secName"></h2>
+        <div id="sugContainer">
+            <h2 id="secRepo"></h2>
+            <h3>Last updated 5.20.2013</h3>
+            <p id="secDesc"></p>
+        </div>
+        <div id="sugContainer">
+            <h2 id="thirdRepo">BaconAssetLoader</h2>
+            <h3>Last updated 5.20.2013</h3>
+            <p id="thirdDesc"></p>
+        </div>
+        <div id="sugContainer">
+            <h2 id="fourthRepo">BetterReflection</h2>
+            <h3>Last updated 5.20.2013</h3>
+            <p id="fourthDesc"></p>
+        </div>
+    </div>
+
+
+
+<!-- 
+<canvas id="buyers" width="600" height="400"></canvas>
+ -->
+
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="javascript1.js"></script>
+</body>
+</html>
